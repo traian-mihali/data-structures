@@ -32,6 +32,21 @@ class LinkedList {
     return currentNode;
   }
 
+  getAt(index) {
+    if (!this[_head] || index < 0) return -1;
+
+    let currentNode = this[_head];
+    let currentIndex = 0;
+    while (currentNode && currentIndex < index) {
+      if (currentIndex === index) return currentIndex;
+
+      currentNode = currentNode.next;
+      currentIndex++;
+    }
+
+    return currentNode ? currentNode : -1;
+  }
+
   push(data) {
     if (!data) throw new Error("Invalid data");
     const newNode = new LinkedListNode(data);
