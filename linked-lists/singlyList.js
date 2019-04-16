@@ -47,6 +47,25 @@ class LinkedList {
     return currentNode ? currentNode : -1;
   }
 
+  removeFrom(index) {
+    if (!this[_head]) throw new Error("List is empty");
+
+    if (index === 0) {
+      let currentNode = this[_head];
+      this[_head] = this[_head].next;
+      return currentNode.data;
+    }
+
+    let previousNode = this.getAt(index - 1);
+    let currentNode = null;
+    if (previousNode) currentNode = previousNode.next;
+
+    if (currentNode) {
+      previousNode.next = currentNode.next;
+      return currentNode.data;
+    }
+  }
+
   push(data) {
     if (!data) throw new Error("Invalid data");
     const newNode = new LinkedListNode(data);
