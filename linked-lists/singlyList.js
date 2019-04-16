@@ -27,9 +27,9 @@ class LinkedList {
   shift() {
     if (!this[_head]) throw new Error("List is empty");
 
-    const currentNode = this[_head];
+    const data = this[_head].data;
     this[_head] = this[_head].next;
-    return currentNode;
+    return data;
   }
 
   getAt(index) {
