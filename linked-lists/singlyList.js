@@ -21,7 +21,7 @@ class LinkedList {
       newNode.next = this[_head];
       this[_head] = newNode;
     }
-    return this[_head];
+    return this[_head].data;
   }
 
   shift() {
@@ -38,8 +38,6 @@ class LinkedList {
     let currentNode = this[_head];
     let currentIndex = 0;
     while (currentNode && currentIndex < index) {
-      if (currentIndex === index) return currentIndex;
-
       currentNode = currentNode.next;
       currentIndex++;
     }
@@ -98,6 +96,13 @@ class LinkedList {
     }
     previousNode.next = null;
     return currentNode;
+  }
+
+  get length() {
+    let counter = 0;
+
+    for (let data of this) counter++;
+    return counter;
   }
 
   *[Symbol.iterator]() {
